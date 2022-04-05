@@ -1,0 +1,127 @@
+from pandora.definitions import AIRODUMP_PATH, HTTPREQS_PATH, NMAP_PATH
+
+"""
+Configuration File
+"""
+
+"""
+Parameters that you should configure so it works:
+TARGET_SSID, WPA_ONLINE_MAIL, NMAP_TARGETS, MITM_TARGET
+"""
+
+"""
+Parameters you may want to configure:
+SCHEDULE_AIRODUMP, SCHEDULE_MITM, SCHEDULE_UPLOAD
+TIMEOUT_WPA, TIMEOUT_WEP, TIMEOUT_WPS, TIMEOUT_WASH
+"""
+
+"""
+If upload is set to True, you should also configure:
+API, USERNAME, PASSWORD, TAG_FOLDER_LIST
+"""
+
+# Adds more messages to console.
+DEBUG = False
+
+# When upload is True it will upload files to the server. 
+UPLOAD = False
+
+"""
+Upload parameters
+"""
+# Schedule parameters are set in minutes.
+# Period at which files will be uploaded to the server.
+SCHEDULE_UPLOAD = 30
+
+"""
+Discover mode parameters
+"""
+# Period at which airodump scans will happen.
+SCHEDULE_AIRODUMP = 20
+
+"""
+Intrusion mode parameters
+"""
+# Description: SSID of target network
+# Type: str
+# Example: 'JohnDoe2.4GHZ'
+TARGET_SSID = 'JohnDoe2.4GHZ'
+
+# Timeouts for WPA, WEP and WPS
+# Type number in seconds
+TIMEOUT_WPA = 60*10
+TIMEOUT_WEP = 60*5
+TIMEOUT_WPS = 60*10
+TIMEOUT_WASH = 20
+
+# Mail for WPA Crack API OnlineHashCrack.
+# The password will be sent to this email.
+# Type: mail
+# Example: example@example.com
+WPA_ONLINE_MAIL = 'example@example.com'
+
+"""
+Recollect mode parameters
+"""
+# Period at which MITM will restart to write logs, prepare logs to be sent and start intercepting again.
+# Files can't be sent until MITM Job restarts.
+SCHEDULE_MITM = 30
+
+# MAC targets for OS detection with Nmap.
+# Examples ['AA:AA:AA:AA:AA:AA', 'BB:BB:BB:BB:BB:BB']
+NMAP_TARGETS = []
+
+# MAC target for MITM attack
+# Example 'AA:AA:AA:AA:AA:AA'
+MITM_TARGET = ''
+
+# Tshark Filtering for MITM Attack
+# Capture Filter Expression
+# Type: str
+# Example "host 50.34.10.8 and tcp port 443"
+CAPTURE_FILTER_EXPRESSION = ""
+
+# Description: Use as host
+USE_VICTIM_IP_FROM_MAC = True
+
+# Display Filter Expression
+# Type: str
+# Example "tls.handshake.type==1"
+DISPLAY_FILTER_EXPRESSION = "tls.handshake.type==1"
+
+# Tshark Output Fields in CSV
+# Type: str[]
+# Example: ["ip.dst","ip.src","frame.time","tls.handshake.extensions_server_name"]
+TSHARK_FIELDS = ["ip.dst", "ip.src", "frame.time", "tls.handshake.extensions_server_name"]
+
+
+WPS_PIN = ""
+
+"""
+Deauth mode parameters
+"""
+# Duration (in minutes) of the access point deauthentication attack
+DEAUTH_MINUTES = 5
+
+"""
+Uploading parameters
+Uploading happens in discover mode and recollect mode
+"""
+
+# The API URL where files will be uploaded
+# It can be an IP
+API = 'https://example.com'
+
+# Username and password to authenticate to the API
+USERNAME = 'pandora'
+PASSWORD = "pandora"
+
+# List of tuples with TAG ID and FOLDER PATH
+# TAG ID to associate the files with (you can find the tag ID in the API)
+# FOLDER PATH to upload all files inside that folder
+# If you upload files you have to set the Tag IDs to the corresponding IDs in your server
+TAG_FOLDER_LIST = [('1', AIRODUMP_PATH), ('2', NMAP_PATH), ('3', HTTPREQS_PATH)]
+
+# Extensions that won't be uploaded to the server
+# But they will be deleted from the folders to be uploaded
+UNACCEPTED_EXTENSIONS = ['ivs']

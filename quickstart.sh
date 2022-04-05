@@ -1,0 +1,1 @@
+cp pandora/config.py.default pandora/config.py

